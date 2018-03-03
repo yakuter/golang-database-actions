@@ -115,11 +115,10 @@ func add() {
 
 }
 
-func update() {
+func update(postId int) {
 
 	db := dbConn()
 
-	id		:= 1
 	title 	:= "Hello 1 World"
 	body 	:= "The content of the hello 1 world"
 	updateQuery, err := db.Prepare("UPDATE Posts SET title=?, body=? WHERE id=?")
@@ -127,7 +126,7 @@ func update() {
 		panic(err.Error())
 	}
 
-	updateQuery.Exec(title, body, id)
+	updateQuery.Exec(title, body, postId)
 
 	fmt.Println("UPDATED: Title: " + title + " | Body: " + body)
 
@@ -155,8 +154,8 @@ func delete(postId int) {
 func main()  {
 
 	//add()
-	//update()
-	//delete(3)
+	//update(1)
+	//delete(1)
 	//getOne(1)
 	getAll()
 	
